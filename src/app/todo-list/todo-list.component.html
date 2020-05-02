@@ -6,7 +6,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Awesome Todo list</h4>
                         <div class="add-items d-flex">
-                            <input [(ngModel)]="_taskDescription" type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> <button (click)="addTask()" class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button>
+                            <input [(ngModel)]="_taskDescription" type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> <button [disabled]="_taskDescription.trim().length == 0" (click)="addTask()" class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button>
                         </div>
 
                         <div class="list-wrapper">
@@ -14,7 +14,7 @@
                                 <li *ngFor="let task of _taskList">
                                     <div class="form-check">
                                         <label class="form-check-label"> 
-                                            <input type="checkbox" [attr.checked]="task.done ? 'checked' : null" (click)="updateTaskStatus(task.id)"> {{ task.description }} <i class="input-helper"></i>
+                                            <input type="checkbox" [checked]="task.done ? 'checked' : null" (click)="updateTaskStatus(task.id)"> {{ task.description }} <i class="input-helper"></i>
                                         </label>
                                     </div>
 
