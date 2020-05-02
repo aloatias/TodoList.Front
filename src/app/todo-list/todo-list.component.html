@@ -1,16 +1,26 @@
 <div class="page-content page-container" id="page-content">
     <div class="padding">
-        <div class="row container justify-content-center">
+        <div class="row justify-content-center">
             <div class="col-sm-11">
-                <div class="card px-3">
+                <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Awesome Todo list</h4>
-                        <div class="add-items d-flex">
-                            <input [(ngModel)]="taskDescription" type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> <button [disabled]="taskDescription.trim().length == 0" (click)="addTask()" class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-11">
+                                        <input [(ngModel)]="taskDescription" type="text" class="form-control todo-list-input" placeholder="What do you need to do today?">
+                                    </div>
+
+                                    <div class="col-sm-1 text-right">
+                                        <button [disabled]="taskDescription.trim().length == 0" (click)="addTask()" class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="list-wrapper">
-                            <ul class="d-flex flex-column-reverse todo-list">
+                            <ul class="flex-column-reverse todo-list">
                                 <li *ngFor="let task of taskList" class="row">
                                     <div class="col-sm-12">
                                         <div class="row">
@@ -20,7 +30,7 @@
                                             </div>
 
                                             <div class="col-sm-2 text-right">
-                                                <button type="button" class="btn-sm btn-danger">Delete</button>
+                                                <button type="button" class="btn-sm btn-danger" (click)="deleteTask(task.id)">Delete</button>
                                             </div>
                                         </div>
                                     </div>
