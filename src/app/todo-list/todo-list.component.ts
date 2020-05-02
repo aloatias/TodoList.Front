@@ -8,8 +8,8 @@ import { Task } from '../Dtos/Task';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  private _taskDescription: string = "";
-  private _taskList: Task[];
+  public taskDescription: string = "";
+  public taskList: Task[];
 
   constructor(private _taskService: TaskService) { }
 
@@ -18,10 +18,10 @@ export class TodoListComponent implements OnInit {
   }
 
   addTask(): void {
-    this._taskService.AddTask(this._taskDescription)
+    this._taskService.AddTask(this.taskDescription)
       .subscribe(() => {
         this.getAllTasks();
-        this._taskDescription = "";
+        this.taskDescription = "";
       });
   }
 
@@ -34,6 +34,6 @@ export class TodoListComponent implements OnInit {
 
   private getAllTasks() {
     this._taskService.GetAllTasks()
-      .subscribe(tasks => this._taskList = tasks);
+      .subscribe(tasks => this.taskList = tasks);
   }
 }

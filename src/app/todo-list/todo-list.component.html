@@ -6,7 +6,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Awesome Todo list</h4>
                         <div class="add-items d-flex">
-                            <input [(ngModel)]="_taskDescription" type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> <button [disabled]="_taskDescription.trim().length == 0" (click)="addTask()" class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button>
+                            <input [(ngModel)]="taskDescription" type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> <button [disabled]="taskDescription.trim().length == 0" (click)="addTask()" class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button>
                         </div>
 
                         <div class="list-wrapper">
