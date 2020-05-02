@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
+import { Task } from '../Dtos/Task';
 
 @Component({
   selector: 'app-todo-list',
@@ -7,22 +8,32 @@ import { TaskService } from '../task.service';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  taskDescription: string = "";
+  private _taskDescription: string = "";
+  private _taskList: Task[];
 
   constructor(private _taskService: TaskService) { }
 
   ngOnInit(): void {
-    this._taskService.GetAllTasks()
-      .subscribe(tasks => {
-        console.log(tasks);
-    });
+    this.getAllTasks();
   }
 
   addTask(): void {
-    this._taskService.AddTask(this.taskDescription)
+    this._taskService.AddTask(this._taskDescription)
       .subscribe(() => {
-        this._taskService.GetAllTasks()
-          .subscribe(() => console.log("asdf"));
+        this.getAllTasks();
+        this._taskDescription = "";
       });
+  }
+
+  updateTaskStatus(taskId: string) {
+    this._taskService.UpdateTaskStatus(taskId)
+      .subscribe(() => {
+        this.getAllTasks();
+      });
+  }
+
+  private getAllTasks() {
+    this._taskService.GetAllTasks()
+      .subscribe(tasks => { this._taskList = tasks; console.log(tasks) });
   }
 }
