@@ -31,8 +31,8 @@ export class TaskService {
   GetAllTasks() : Observable<Task[]> {
     return this._http.get<Task[]>(Urls.TASK_GETALL);
   }
-
-  UpdateTaskStatus(taskId: string) : Observable<Task> {
+  
+  UpdateTaskStatus(taskId: string): Observable<Task> {
     return this._http.put<Task>(Urls.TASK_UPDATESTATUS, { "taskId": taskId }, httpOptions);
   }
 }
