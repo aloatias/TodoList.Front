@@ -34,6 +34,6 @@ export class TodoListComponent implements OnInit {
 
   private getAllTasks() {
     this._taskService.GetAllTasks()
-      .subscribe(tasks => { this._taskList = tasks; console.log(tasks) });
+      .subscribe(tasks => this._taskList = tasks);
   }
 }
