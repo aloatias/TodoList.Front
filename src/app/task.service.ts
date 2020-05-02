@@ -20,10 +20,14 @@ export class TaskService {
   }
   
   AddTask(taskDescription: string) : Observable<Task> {
-    return this._http.post<Task>(Urls.TASK_ADDTASK, { "taskDescription": taskDescription }, httpOptions);
+    return this._http.post<Task>(Urls.TASK_ADD, { "taskDescription": taskDescription }, httpOptions);
   }
 
   GetAllTasks() : Observable<Task[]> {
-    return this._http.get<Task[]>(Urls.TASK_GETALLTASKS);
+    return this._http.get<Task[]>(Urls.TASK_GETALL);
+  }
+
+  UpdateTaskStatus(taskId: string): Observable<Task> {
+    return this._http.put<Task>(Urls.TASK_UPDATESTATUS, { "taskId": taskId }, httpOptions);
   }
 }
