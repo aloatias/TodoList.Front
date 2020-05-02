@@ -384,7 +384,7 @@ input[type="checkbox"] {
 
 .text-primary,
 .list-wrapper .completed .remove {
-    color: #405189 !important
+    color: #405189 !important;
 }
 
 .list-wrapper .remove {
@@ -427,7 +427,8 @@ input[type="checkbox"] {
     padding: 0;
     text-align: left;
     list-style: none;
-    margin-bottom: 0
+    margin-bottom: 0;
+    margin-top: 15px;
 }
 
 .flex-column-reverse {

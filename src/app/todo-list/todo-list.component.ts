@@ -25,6 +25,13 @@ export class TodoListComponent implements OnInit {
       });
   }
 
+  deleteTask(taskId: string) {
+    this._taskService.DeleteTask(taskId)
+      .subscribe(() => {
+        this.getAllTasks();
+      });
+  }
+
   updateTaskStatus(taskId: string) {
     this._taskService.UpdateTaskStatus(taskId)
       .subscribe(() => {
