@@ -8,11 +8,11 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="row">
-                                    <div class="col-sm-11">
+                                    <div class="col-sm-10">
                                         <input [(ngModel)]="taskDescription" type="text" class="form-control todo-list-input" placeholder="What do you need to do today?">
                                     </div>
 
-                                    <div class="col-sm-1 text-right">
+                                    <div class="col-sm-2 text-right">
                                         <button [disabled]="taskDescription.trim().length == 0" (click)="addTask()" class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button>
                                     </div>
                                 </div>
@@ -23,7 +23,7 @@
                             <ul class="flex-column-reverse todo-list">
                                 <li *ngFor="let task of taskList" class="row">
                                     <div class="col-sm-12">
-                                        <div class="row">
+                                        <div class="row" [style]="task.done ? 'text-decoration: line-through;' : null">
                                             <div class="col-sm-10">
                                                 <input type="checkbox" [checked]="task.done ? 'checked' : null" (click)="updateTaskStatus(task.id)"> {{ task.description }}
                                                 <i class="input-helper"></i>
