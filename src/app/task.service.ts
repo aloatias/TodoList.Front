@@ -20,7 +20,7 @@ export class TaskService {
   }
   
   AddTask(taskDescription: string) : Observable<Task> {
-    return this._http.post<Task>(Urls.TASK_ADD, { "taskDescription": taskDescription }, httpOptions);
+    return this._http.post<Task>(Urls.TASK_ADD, { "description": taskDescription }, httpOptions);
   }
 
   DeleteTask(taskId: string) {
@@ -33,6 +33,6 @@ export class TaskService {
   }
   
   UpdateTaskStatus(taskId: string): Observable<Task> {
-    return this._http.put<Task>(Urls.TASK_UPDATESTATUS, { "taskId": taskId }, httpOptions);
+    return this._http.put<Task>(Urls.TASK_UPDATESTATUS, { "id": taskId }, httpOptions);
   }
 }
