@@ -7,7 +7,8 @@ import { Urls } from './Shared/BaseUrl';
 const httpOptions = {
   headers: new HttpHeaders({
     "Content-Type": "application/json"
-  })
+  }),
+  params: new HttpParams()
 };
 
 @Injectable({
@@ -24,7 +25,9 @@ export class TaskService {
   }
 
   DeleteTask(taskId: string) {
-    let url = Urls.TASK_DELETE + taskId;
+    let url = Urls.TASK_DELETE;
+    httpOptions.params = httpOptions.params.set("taskId", taskId);
+
     return this._http.delete(url, httpOptions);
   }
 
