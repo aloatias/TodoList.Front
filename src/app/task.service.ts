@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Task } from './Dtos/Task';
-import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 import { Urls } from './Shared/BaseUrl';
 import { retry, catchError } from 'rxjs/operators';
 
@@ -48,18 +48,22 @@ export class TaskService {
       .pipe(catchError(this.handleError));
   }
 
-  private handleError(error) {
+  private handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // client-side error
       errorMessage = `Error: ${error.error.message}`;
     } else {
       // server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      if (error.status !== 500)
+      {
+        errorMessage = error.error;
+      } else {
+        errorMessage = "Un error occured. Please try again later";
+      }
     }
 
-    alert(error.error);
-    console.log(errorMessage);
+    alert(errorMessage);
 
     return throwError(errorMessage);
   }
