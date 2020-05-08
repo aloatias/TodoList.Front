@@ -55,8 +55,7 @@ export class TaskService {
       errorMessage = `Error: ${error.error.message}`;
     } else {
       // server-side error
-      if (error.status !== 500)
-      {
+      if (error.status !== 500) {
         errorMessage = error.error;
       } else {
         errorMessage = "Un error occured. Please try again later";
