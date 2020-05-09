@@ -58,7 +58,7 @@ export class TaskService {
       if (error.status !== 500) {
         errorMessage = error.error;
       } else {
-        errorMessage = "Un error occured. Please try again later";
+        errorMessage = "Un error occurred. Please try again later";
       }
     }
 
